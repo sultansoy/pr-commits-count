@@ -1,0 +1,21 @@
+name: 'PR Commits Count'
+description: 'Action to checks the count of commits in pull request.'
+inputs:
+  source-branch:  # id of input
+    description: 'Source branch'
+    required: false
+    default: ${{ github.head_ref }}
+  target-branch:  # id of input
+    description: 'Target branch'
+    required: false
+    default: ${{ github.base_ref }}
+  except-branches:  # id of input
+    description: 'Excepted source branches (possible to pass multiple branches separated by ;)'
+    required: false
+  commits-count:  # id of input
+    description: 'Possible count of commits'
+    required: false
+    default: 1
+runs:
+  using: 'node12'
+  main: 'index.js'
