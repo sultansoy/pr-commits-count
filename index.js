@@ -42,16 +42,16 @@ async function getCommitsCount(sourceBranch, targetBranch) {
             },
         };
 
-        await exec.exec(`${__dirname}/commits-count.sh`, [sourceBranch, targetBranch], options);
+        await exec.exec(`${__dirname}/commits-count.sh`, ['remotes/origin/' + sourceBranch, 'remotes/origin/' + targetBranch], options);
 
         if (err) {
             core.setFailed(err);
-            process.exit(0);
+            process.exit(1);
         } else {
             return Number.parseInt(out.trim());
         }
     } catch (error) {
         core.setFailed(`Error: ${error.message}`);
-        process.exit(0);
+        process.exit(1);
     }
 }
